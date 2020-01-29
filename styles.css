@@ -1,0 +1,42 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f6f6f6;
+}
+
+.logo {
+  margin: 76px 0 0 94px;
+  padding: 0;
+}
+
+.wip {
+  display: grid;
+  grid-template-rows: auto;
+  font-family: Adobe Garamond Pro, Georgia, serif;
+  justify-items: center;
+  align-items: center;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wip h1 {
+  font-size: 7.4vw;
+  font-weight: normal;
+  margin: 25vh 0 0 0;
+  padding: 0;
+}
+
+.wip p {
+  margin: 10.5vh;
+  padding: 0;
+  font-size: 1.7vw;
+  font-weight: 100;
+}
+
+.wip a:hover, a:active, a:link, a:visited {
+  color: black;
+  text-decoration: underline;
+}
