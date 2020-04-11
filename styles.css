@@ -14,9 +14,8 @@
 html {
   background-color: #f5f5f5;
 }
-
 li {
-  list-style-type: none;
+  list-style-type: none; /* removes bullets */
 }
 
 .logo {
@@ -34,22 +33,23 @@ li {
 
 nav {
   display: flex; /* puts elements next to each other */
-  justify-content: space-between;/* spaces elements evenly */
+  justify-content: space-between; /* spaces elements evenly */
   align-items: center; /* align elements vertically center */
   min-height: 22vh; /* change later */
-  font-family: 'Adobe Garamond Pro', serif;
+  font-family: 'EB Garamond', serif;
   background-color: #f5f5f5;
 }
-
 .nav-links {
   display: flex;
   margin-right: 70px;
   font-style: italic;
-  font-size: 20px;
+  font-size: 18px;
+  padding-bottom: 4px;
 }
 
 .nav-links a {
   text-decoration: none;
+  padding-right: 1px;
   font-weight: 600;
   color: black;
 }
@@ -61,19 +61,19 @@ nav {
 }
 
 .projects ul {
-  padding-bottom: 40px;
+  padding-bottom: 44px;
 }
 
 .projects h3 {
-  font-family: 'Avenir', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 13px;
-  letter-spacing: 1.3px;
+  letter-spacing: 1.6px;
   color: #878787;
-  padding-bottom: 14px;
+  padding-bottom: 12px;
 }
 
 .projects a {
-  font-family: 'Adobe Garamond Pro', serif;
+  font-family: 'EB Garamond', serif;
   font-size: 7.5vw;
   line-height: 11.7vw;
   text-decoration: none;
@@ -93,7 +93,7 @@ nav {
   position: absolute;
   width: 100%;
   right: 0;
-  top: 50%;
+  top: 60%;
 }
 
 /* Hover effect */
@@ -112,7 +112,7 @@ nav {
   position: absolute;
   width: 0;
   height: 1.3px;
-  bottom: 4px;
+  bottom: 5px;
   left: 0;
   background-color: #000;
   visibility: hidden; /* Hide for browsers without CSS animation support */
@@ -160,16 +160,13 @@ nav {
   }
 
   .projects h3 {
-    font-size: 18px;
-    letter-spacing: 1.8px;
-    padding-bottom: 18px;
+    font-size: 17px;
+    letter-spacing: 2.5px;
+    padding-bottom: 15px;
   }
 
   .projects a {
     font-size: 42px;
     line-height: 65px;
   }
-}
-
-@media screen and (min-width: 1000px) {
 }
