@@ -1,0 +1,282 @@
+* {
+  margin: 0;
+  padding: 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  overflow: auto;
+}
+
+*::selection { /* highlight colour */
+  background: #dedede;
+} 
+
+html {
+  background-color: #f6f6f5; /* #f6f3f1 */
+}
+
+li {
+  list-style-type: none; /* removes bullets */
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  margin-left: 19.5%;
+}
+
+.nav-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  z-index: 1; /* Forces header on top layer */
+}
+
+nav {
+  display: flex; /* puts elements next to each other */
+  justify-content: space-between; /* spaces elements evenly */
+  align-items: center; /* align elements vertically center */
+  min-height: 22vh; /* change later */
+  font-family: 'EB Garamond', serif;
+  background-color: #f6f6f5;
+}
+
+.nav-links {
+  display: flex;
+  margin-right: 70px;
+  font-style: italic;
+  font-size: 18px;
+  padding-bottom: 4px;
+}
+
+.nav-links a {
+  padding-right: 1px;
+  font-weight: 600;
+  color: black;
+}
+
+.projects-wrapper {
+  height: 100%;
+  padding-top: 26vh;
+  padding-left: 19.5%;
+}
+
+.projects-wrapper ul {
+  padding-bottom: 44px;
+}
+
+.projects-wrapper h3 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  color: #878787;
+  padding-bottom: 10px;
+}
+
+.projects-wrapper a {
+  font-family: 'EB Garamond', serif;
+  font-size: 7.5vw;
+  line-height: 11.7vw;
+}
+
+.inactive {
+  color: #bbb;
+  position: relative;
+}
+
+.inactive::after {
+  /* For custom strikethrough */
+  border-bottom: 1.5px solid #bbb;
+  content: "";
+  left: 0;
+  margin-top: calc(1.5px / 2 * -1);
+  position: absolute;
+  width: 100%;
+  right: 0;
+  top: 60%;
+}
+
+/* Hover effect */
+.active {
+  position: relative;
+  color: #000;
+  padding-left: 0;
+
+  -webkit-transition: padding-left 0.2s ease-in-out;
+  transition: padding-left 0.2s ease-in-out;
+}
+
+.active::before {
+  /* For underline effect */
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 5px;
+  left: 0;
+  background-color: #000;
+  visibility: hidden; /* Hide for browsers without CSS animation support */
+  transition-property: visibility, width, left;
+  transition-duration: 0.3s, 0.3s, 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.active:hover {
+  /* For left-glide effect */
+  padding-left: 24px;
+}
+
+.active:hover::before {
+  /* For underline effect */
+  visibility: visible;
+  width: calc(100% - 24px);
+  left: 24px;
+}
+
+.about-wrapper {
+  height: 100%;
+  padding-left: 19.5%;
+  padding-right: 19.5%;
+  padding-top: 29vh;
+  padding-bottom: 10vh; /* Need to decide vh or px for padding-bottom */
+}
+
+.about-wrapper h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: 5.5vw;
+  font-weight: 400;
+  line-height: 7.2vw;
+  margin-bottom: 36px;
+}
+
+.about-wrapper p {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 3.7vw;
+  font-weight: 400;
+  line-height: 6.2vw;
+}
+
+.contact-wrapper {
+  display: flex;
+  align-items: baseline;
+  margin-top: 36px;
+  margin-bottom: 10vh;
+}
+
+.contact-wrapper h4 {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 3vw;
+  letter-spacing: 1.8px;
+}
+
+.contact-wrapper a {
+  font-family: 'EB Garamond', serif;
+  font-size: 4.6vw;
+  font-weight: 500;
+  line-height: 8.4vw;
+  color: #000;
+  margin-left: 24px;
+
+  position: relative;
+}
+
+.contact-wrapper a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 1px;
+  left: 0;
+  background-color: #000;
+  transition: bottom 0.2s;
+}
+
+.contact-wrapper a:hover::before {
+  bottom: -2px;
+}
+
+/* ==== RESPONSIVENESS ==== */
+
+@media screen and (min-width: 480px) {
+  .logo {
+    margin-left: 94px;
+  }
+
+  .projects-wrapper {
+    padding-left: 94px;
+  }
+
+  .projects-wrapper a {
+    font-size: 36px;
+    line-height: 56px;
+  }
+
+  .about-wrapper h2 {
+    font-size: 26.6px;
+    line-height: 34.6px;
+  }
+
+  .about-wrapper p {
+    font-size: 18px;
+    line-height: 28.8px;
+  }
+
+  .contact-wrapper h4 {
+    font-size: 15px
+  }
+
+  .contact-wrapper a {
+    font-size: 20px;
+    line-height: 32px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  nav {
+    background-color: transparent;
+  }
+
+  .projects-wrapper {
+    padding-left: 25%;
+    padding-top: 18vh;
+    height: 82vh;
+  }
+
+  .projects-wrapper h3 {
+    font-size: 17px;
+    letter-spacing: 2.5px;
+    padding-bottom: 13px;
+  }
+
+  .projects-wrapper a {
+    font-size: 42px;
+    line-height: 65px;
+  }
+
+  .active::before {
+    height: 1.3px;
+  }
+
+  .about-wrapper h2 {
+    font-size: 34px;
+    line-height: 44.2px;
+  }
+
+  .about-wrapper p {
+    font-size: 20px;
+    line-height: 34px;
+  }
+
+  .contact-wrapper ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .contact-wrapper a {
+    margin-left: 45px;
+  }
+}
