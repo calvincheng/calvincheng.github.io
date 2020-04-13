@@ -164,13 +164,14 @@ nav {
   display: flex;
   align-items: baseline;
   margin-top: 36px;
-  margin-bottom: 10vh;
+  padding-bottom: 6vh;
 }
 
 .contact-wrapper h4 {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 3vw;
   letter-spacing: 1.8px;
+  /* color: #878787; */
 }
 
 .contact-wrapper a {
