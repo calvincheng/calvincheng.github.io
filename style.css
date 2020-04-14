@@ -6,6 +6,11 @@
   overflow: auto;
 }
 
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 *::selection { /* highlight colour */
   background: #dedede;
 } 
@@ -62,6 +67,12 @@ nav {
   height: 100%;
   padding-top: 26vh;
   padding-left: 19.5%;
+
+  animation: fadein 0.5s;
+}
+
+.projects-wrapper::before {
+  opacity: 1;
 }
 
 .projects-wrapper ul {
@@ -143,6 +154,8 @@ nav {
   padding-right: 19.5%;
   padding-top: 29vh;
   padding-bottom: 10vh; /* Need to decide vh or px for padding-bottom */
+
+  animation: fadein 0.5s;
 }
 
 .about-wrapper h2 {
@@ -178,7 +191,7 @@ nav {
   font-family: 'EB Garamond', serif;
   font-size: 4.6vw;
   font-weight: 500;
-  line-height: 8.4vw;
+  line-height: 8vw;
   color: #000;
   margin-left: 24px;
 
@@ -232,7 +245,7 @@ nav {
 
   .contact-wrapper a {
     font-size: 20px;
-    line-height: 32px;
+    line-height: 38px;
   }
 }
 
