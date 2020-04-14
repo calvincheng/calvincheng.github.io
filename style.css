@@ -3,7 +3,7 @@
   padding: 0;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  overflow: auto;
+  overflow: scroll;
 }
 
 @keyframes fadein {
@@ -163,7 +163,7 @@ nav {
   font-size: 5.5vw;
   font-weight: 400;
   line-height: 7.2vw;
-  margin-bottom: 36px;
+  overflow: hidden; /* This element is scrollable on mobile for some reason */
 }
 
 .about-wrapper p {
@@ -171,13 +171,13 @@ nav {
   font-size: 3.7vw;
   font-weight: 400;
   line-height: 6.2vw;
+  margin-top: 36px;
 }
 
 .contact-wrapper {
   display: flex;
   align-items: baseline;
   margin-top: 36px;
-  padding-bottom: 6vh;
 }
 
 .contact-wrapper h4 {
