@@ -3,7 +3,7 @@
   padding: 0;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  overflow: scroll;
+  overflow: auto;
 }
 
 @keyframes fadein {
@@ -58,7 +58,7 @@ nav {
 }
 
 .nav-links a {
-  padding-right: 1px;
+  padding-right: 2px;
   font-weight: 600;
   color: black;
 }
