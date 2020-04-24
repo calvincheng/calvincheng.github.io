@@ -31,6 +31,10 @@ a {
   margin-left: 19.5%;
 }
 
+.logo-svg {
+  fill: #1d1d1b;
+}
+
 .nav-wrapper {
   position: fixed;
   top: 0;
@@ -61,6 +65,12 @@ nav {
   padding-right: 2px;
   font-weight: 600;
   color: black;
+}
+
+.back-button-svg {
+  stroke: #1d1d1b;
+  stroke-width: 1.5px;
+  stroke-miterlimit: 10;
 }
 
 .projects-wrapper {
