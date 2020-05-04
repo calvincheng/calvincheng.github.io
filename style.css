@@ -173,8 +173,9 @@ nav {
   font-size: 5.5vw;
   font-weight: 400;
   line-height: 7.2vw;
-  overflow: hidden; /* This element is scrollable on mobile for some reason */
-}
+
+  /* Hacky fix: element is somehow scrollable on mobile */
+  overflow: hidden; }
 
 .about-wrapper p {
   font-family: 'Nunito Sans', sans-serif;
@@ -223,9 +224,11 @@ nav {
   bottom: -2px;
 }
 
+
 /* ==== RESPONSIVENESS ==== */
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 480px) { /* Tablets */
+
   .logo {
     margin-left: 94px;
   }
@@ -259,7 +262,7 @@ nav {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) { /* Laptops */
   nav {
     background-color: transparent;
   }
@@ -302,5 +305,27 @@ nav {
 
   .contact-wrapper a {
     margin-left: 45px;
+  }
+}
+
+@media screen and (min-width: 1440px) { /* Large Screens */
+  .projects-wrapper h3 {
+    font-size: 1.18vw; /*17px;*/
+    letter-spacing: 0.17vw; /*2.5px;*/
+    padding-bottom: 0.9vw; /*13px;*/
+  }
+
+  .projects-wrapper a {
+    font-size: 2.92vw; /*42px;*/
+    line-height: 4.52vw; /*65px;*/
+  }
+
+  .active::before {
+    height: 0.07vw; /*1.3px;*/
+  }
+
+  .about-wrapper {
+    padding-left: calc((100% - 878px) / 2);
+    padding-right: calc((100% - 878px) / 2);
   }
 }
