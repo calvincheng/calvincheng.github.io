@@ -6,6 +6,13 @@
   overflow: auto;
 }
 
+html {
+  font-size: 3.7vw;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
 @keyframes fadein {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -90,18 +97,17 @@ nav {
 }
 
 .projects-wrapper h3 {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 13px;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 1.6px;
+  letter-spacing: 0.12rem;
   color: #878787;
   padding-bottom: 10px;
 }
 
 .projects-wrapper a {
   font-family: 'EB Garamond', serif;
-  font-size: 7.5vw;
-  line-height: 11.7vw;
+  font-size: 2rem;
+  line-height: 1.6;
 }
 
 .inactive {
@@ -111,10 +117,10 @@ nav {
 
 .inactive::after {
   /* For custom strikethrough */
-  border-bottom: 1.5px solid #bbb;
+  border-bottom: 0.04rem solid #bbb;
   content: "";
   left: 0;
-  margin-top: calc(1.5px / 2 * -1);
+  margin-top: calc(0.04rem / 2 * -1);
   position: absolute;
   width: 100%;
   right: 0;
@@ -136,8 +142,8 @@ nav {
   content: "";
   position: absolute;
   width: 0;
-  height: 1px;
-  bottom: 5px;
+  height: 0.02rem;
+  bottom: 0.3rem;
   left: 0;
   background-color: #000;
   visibility: hidden; /* Hide for browsers without CSS animation support */
@@ -148,14 +154,14 @@ nav {
 
 .active:hover {
   /* For left-glide effect */
-  padding-left: 24px;
+  padding-left: 1.33rem;
 }
 
 .active:hover::before {
   /* For underline effect */
   visibility: visible;
-  width: calc(100% - 24px);
-  left: 24px;
+  width: calc(100% - 1.33rem);
+  left: 1.33rem;
 }
 
 .about-wrapper {
@@ -170,18 +176,14 @@ nav {
 
 .about-wrapper h2 {
   font-family: 'EB Garamond', serif;
-  font-size: 5.5vw;
   font-weight: 400;
-  line-height: 7.2vw;
+  font-size: 1.48rem;
+  line-height: 1.35;
 
   /* Hacky fix: element is somehow scrollable on mobile */
   overflow: hidden; }
 
 .about-wrapper p {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 3.7vw;
-  font-weight: 400;
-  line-height: 6.2vw;
   margin-top: 36px;
 }
 
@@ -192,20 +194,18 @@ nav {
 }
 
 .contact-wrapper h4 {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 3vw;
+  font-size: 0.8rem;
   letter-spacing: 1.8px;
   /* color: #878787; */
 }
 
 .contact-wrapper a {
   font-family: 'EB Garamond', serif;
-  font-size: 4.6vw;
+  font-size: 1.1rem;
   font-weight: 500;
-  line-height: 8vw;
+  line-height: 1.9;
   color: #000;
   margin-left: 24px;
-
   position: relative;
 }
 
@@ -228,6 +228,9 @@ nav {
 /* ==== RESPONSIVENESS ==== */
 
 @media screen and (min-width: 480px) { /* Tablets */
+  html {
+    font-size: 18px;
+  }
 
   .logo {
     margin-left: 94px;
@@ -236,33 +239,13 @@ nav {
   .projects-wrapper {
     padding-left: 94px;
   }
-
-  .projects-wrapper a {
-    font-size: 36px;
-    line-height: 56px;
-  }
-
-  .about-wrapper h2 {
-    font-size: 26.6px;
-    line-height: 34.6px;
-  }
-
-  .about-wrapper p {
-    font-size: 18px;
-    line-height: 28.8px;
-  }
-
-  .contact-wrapper h4 {
-    font-size: 15px
-  }
-
-  .contact-wrapper a {
-    font-size: 20px;
-    line-height: 38px;
-  }
 }
 
 @media screen and (min-width: 768px) { /* Laptops */
+  html {
+    font-size: 20px;
+  }
+
   nav {
     background-color: transparent;
   }
@@ -273,29 +256,12 @@ nav {
     height: 82vh;
   }
 
-  .projects-wrapper h3 {
-    font-size: 17px;
-    letter-spacing: 2.5px;
-    padding-bottom: 13px;
-  }
-
-  .projects-wrapper a {
-    font-size: 42px;
-    line-height: 65px;
-  }
-
-  .active::before {
-    height: 1.3px;
-  }
-
   .about-wrapper h2 {
-    font-size: 34px;
-    line-height: 44.2px;
+    font-size: 1.7rem;
   }
 
-  .about-wrapper p {
-    font-size: 20px;
-    line-height: 34px;
+  .contact-wrapper h4 {
+    font-size: 0.75rem;
   }
 
   .contact-wrapper ul {
@@ -305,6 +271,7 @@ nav {
 
   .contact-wrapper a {
     margin-left: 45px;
+    font-size: 1rem;
   }
 }
 
