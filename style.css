@@ -1,3 +1,8 @@
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,24 +11,56 @@
   overflow: auto;
 }
 
-html {
-  font-size: 3.75vw;
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 400;
-  line-height: 1.65;
-}
-
-@keyframes fadein {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 *::selection { /* highlight colour */
   background: #dedede;
 } 
 
 html {
+  font-size: 3.75vw;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
   background-color: #f6f6f5; /* #f6f3f1 */
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-family: 'EB Garamond', serif;
+  font-size: 2.66rem;
+  font-weight: 500;
+  line-height: 1;
+  padding-bottom: 1.55rem;
+}
+
+h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.16rem;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h3 {
+  font-family: 'EB Garamond', serif;
+  font-weight: 500;
+  font-size: 1.7rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+h5 {
+  font-size: 0.83rem; /* == 15px at 480px */
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  color: #878787;
+}
+
+img {
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 li {
@@ -32,6 +69,10 @@ li {
 
 a {
   text-decoration: none;
+}
+
+.fadein{
+  animation: fadein 0.5s;
 }
 
 .logo {
@@ -84,8 +125,6 @@ nav {
   height: 100%;
   padding-top: 26vh;
   padding-left: 10%;
-
-  animation: fadein 0.5s;
 }
 
 .projects-wrapper::before {
@@ -93,52 +132,34 @@ nav {
 }
 
 .projects-wrapper ul {
-  padding-bottom: 44px;
+  margin-bottom: 44px;
 }
 
-.projects-wrapper h3 {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.12rem;
-  color: #878787;
+.projects-wrapper h5 {
   padding-bottom: 10px;
 }
 
 .projects-wrapper a {
   font-family: 'EB Garamond', serif;
   font-size: 2rem;
-  line-height: 1.6;
+}
+
+.active {
+  color: #000;
 }
 
 .inactive {
   color: #bbb;
-  position: relative;
 }
 
-.inactive::after {
-  /* For custom strikethrough */
-  border-bottom: 0.04rem solid #bbb;
-  content: "";
-  left: 0;
-  margin-top: calc(0.04rem / 2 * -1);
-  position: absolute;
-  width: 100%;
-  right: 0;
-  top: 60%;
-}
-
-/* Hover effect */
-.active {
+.underline-left {
   position: relative;
-  color: #000;
   padding-left: 0;
-
   -webkit-transition: padding-left 0.2s ease-in-out;
   transition: padding-left 0.2s ease-in-out;
 }
 
-.active::before {
-  /* For underline effect */
+.underline-left::before {
   content: "";
   position: absolute;
   width: 0;
@@ -152,67 +173,21 @@ nav {
   transition-timing-function: ease-in-out;
 }
 
-.active:hover {
-  /* For left-glide effect */
+.underline-left:hover {
   padding-left: 1.33rem;
 }
 
-.active:hover::before {
-  /* For underline effect */
+.underline-left:hover::before {
   visibility: visible;
   width: calc(100% - 1.33rem);
   left: 1.33rem;
 }
 
-/* ==== ABOUT PAGE ==== */
-
-.about-wrapper {
-  height: 100%;
-  padding-left: 19.5%;
-  padding-right: 19.5%;
-  padding-top: 29vh;
-  padding-bottom: 10vh; /* Need to decide vh or px for padding-bottom */
-
-  animation: fadein 0.5s;
-}
-
-.about-wrapper h2 {
-  font-family: 'EB Garamond', serif;
-  font-weight: 400;
-  font-size: 1.48rem;
-  line-height: 1.35;
-
-  /* Hacky fix: element is somehow scrollable on mobile */
-  overflow: hidden; }
-
-.about-wrapper p {
-  line-height: 1.7;
-  margin-top: 36px;
-}
-
-.contact-wrapper {
-  display: flex;
-  align-items: baseline;
-  margin-top: 36px;
-}
-
-h4 {
-  font-size: 0.8rem;
-  letter-spacing: 1.8px;
-  color: #575756;
-}
-
-.contact-wrapper a {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  line-height: 1.9;
-  color: #000;
-  margin-left: 24px;
+.underline-down {
   position: relative;
 }
 
-.contact-wrapper a::before {
+.underline-down::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -223,10 +198,56 @@ h4 {
   transition: bottom 0.2s;
 }
 
-.contact-wrapper a:hover::before {
+.underline-down:hover::before {
   bottom: -2px;
 }
+.strikethrough {
+  position: relative;
+}
 
+.strikethrough::after {
+  border-bottom: 0.04rem solid #bbb;
+  content: "";
+  left: 0;
+  margin-top: calc(0.04rem / 2 * -1);
+  position: absolute;
+  width: 100%;
+  right: 0;
+  top: 60%;
+}
+
+/* ==== ABOUT PAGE ==== */
+
+.about-wrapper {
+  height: 100%;
+  padding-left: 19.5%;
+  padding-right: 19.5%;
+  padding-top: 29vh;
+  padding-bottom: 10vh; /* Need to decide vh or px for padding-bottom */
+}
+
+.about-headline {
+  font-family: 'EB Garamond', serif;
+  font-weight: 400;
+  font-size: 1.48rem;
+  line-height: 1.35;
+  /* Hacky fix: element is somehow scrollable on mobile */
+  overflow: hidden;
+}
+
+.about-wrapper p {
+  margin-top: 36px;
+}
+
+.about-wrapper h5 {
+  margin-right: 24px;
+}
+
+.contact-wrapper {
+  display: flex;
+  align-items: baseline;
+  margin-top: 36px;
+}
 
 /* ==== ARTICLES  ==== */
 
@@ -235,30 +256,17 @@ h4 {
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 55vh;
-  padding-bottom: 10vh; /* Need to decide vh or px for padding-bottom */
-
-  animation: fadein 0.5s;
+  padding-bottom: 10vh;
 }
 
-.article-heading h1 {
-  font-family: 'EB Garamond', serif;
-  font-size: 2.66rem;
-  font-weight: 500;
-  line-height: 1;
-  padding-bottom: 1.55rem;
-}
-
-.article-heading h2 {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.16rem;
-  font-weight: 400;
-  line-height: 1.3;
+.article-heading {
   padding-bottom: 3.33rem;
 }
 
 .article-cover {
   margin: auto -12% 44px -12%; /* top right bottom left */
   width: 124%;
+  min-height: 480px;
 }
 
 .article-info {
