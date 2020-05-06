@@ -8,7 +8,7 @@
   padding: 0;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  overflow: auto;
+/*  overflow: auto;*/
 }
 
 *::selection { /* highlight colour */
@@ -32,7 +32,7 @@ h1 {
   font-size: 2.66rem;
   font-weight: 500;
   line-height: 1;
-  padding-bottom: 1.55rem;
+  margin-bottom: 1.55rem;
 }
 
 h2 {
@@ -57,10 +57,31 @@ h5 {
   color: #878787;
 }
 
+.type-significant {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.9;
+  color: #000;
+  margin-right: 24px;
+  margin-bottom: 40px;
+}
+
+figure {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+figcaption {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #575757;
+}
+
 img {
   width: 100%;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  object-fit: cover;
 }
 
 li {
@@ -232,7 +253,7 @@ nav {
   font-size: 1.48rem;
   line-height: 1.35;
   /* Hacky fix: element is somehow scrollable on mobile */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .about-wrapper p {
@@ -253,10 +274,13 @@ nav {
 
 .article-wrapper {
   height: 100%;
+  padding-top: 50vh;
+  padding-bottom: 10vh;
+}
+
+.article-heading, .article-info-wrapper, .article-body {
   padding-left: 10%;
   padding-right: 10%;
-  padding-top: 55vh;
-  padding-bottom: 10vh;
 }
 
 .article-heading {
@@ -264,23 +288,35 @@ nav {
 }
 
 .article-cover {
-  margin: auto -14% 44px -14%; /* top right bottom left */
-  width: 128%;
+  width: 100%;
   min-height: 100vh;
+  margin-bottom: 2.22rem;
 }
 
 .article-info {
   margin-bottom: 2.22rem;
 }
 
-.type-significant {
+.chapter-list-anchor {
+  position: sticky;
+  top: 156px;
+  height: 0;
+  width: 0;
+  margin-left: 6.5%;
+}
+
+.chapter-list-wrapper {
+  width: 156px;
+  visibility: hidden;
+  opacity: 0;
   font-family: 'EB Garamond', serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  line-height: 1.9;
-  color: #000;
-  margin-right: 24px;
-  margin-bottom: 40px;
+  font-size: 0.88rem;
+  line-height: 1.3;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.chapter {
+  margin-bottom: 0.88rem;
 }
 
 /* ==== RESPONSIVENESS ==== */
@@ -334,6 +370,29 @@ nav {
   .contact-wrapper a {
     margin-left: 45px;
     font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  h1 {
+    font-size: 72px;
+  }
+
+  h2 {
+    font-size: 34px;
+  }
+  .article-heading {
+    padding-left: 160px;
+    padding-right: 20%;
+  }
+  .article-info-wrapper, .article-body {
+    padding-left: 28%;
+    width: 650px;
+  }
+
+  .chapter-list-wrapper {
+    visibility: visible;
+/*    opacity: 1; */
   }
 }
 
