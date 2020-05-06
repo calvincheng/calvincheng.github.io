@@ -302,7 +302,7 @@ nav {
   top: 156px;
   height: 0;
   width: 0;
-  margin-left: 6.5%;
+  margin-left: 94px;/*calc(28% - 40px - 156px);*/
 }
 
 .chapter-list-wrapper {
@@ -328,6 +328,10 @@ nav {
 
   .logo {
     margin-left: 94px;
+  }
+
+  .nav-wrapper {
+    z-index: 0;
   }
 
   .nav-links {
@@ -381,18 +385,20 @@ nav {
   h2 {
     font-size: 34px;
   }
+
   .article-heading {
     padding-left: 160px;
     padding-right: 20%;
   }
+
   .article-info-wrapper, .article-body {
-    padding-left: 28%;
+    padding-left: 30%;
     width: 650px;
   }
 
   .chapter-list-wrapper {
     visibility: visible;
-/*    opacity: 1; */
+    z-index: 2;
   }
 }
 
@@ -416,4 +422,14 @@ nav {
     padding-left: calc((100% - 878px) / 2);
     padding-right: calc((100% - 878px) / 2);
   }
+
+  .article-info-wrapper, .article-body {
+    padding-left: calc((100% - 650px) / 2);
+    padding-right: calc((100% - 650px) / 2);
+  }
+
+  .chapter-list-anchor {
+    /*margin-left: calc(((100% - 650px) / 2) - 156px - 40px);*/
+  }
+
 }
