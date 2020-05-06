@@ -7,7 +7,7 @@
 }
 
 html {
-  font-size: 3.7vw;
+  font-size: 3.75vw;
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 400;
   line-height: 1.65;
@@ -35,7 +35,7 @@ a {
 }
 
 .logo {
-  margin-left: 19.5%;
+  margin-left: 10%;
 }
 
 .logo-svg {
@@ -62,7 +62,7 @@ nav {
 
 .nav-links {
   display: flex;
-  margin-right: 70px;
+  margin-right: 10%;/*70px;*/
   font-style: italic;
   font-size: 18px;
   padding-bottom: 4px;
@@ -83,7 +83,7 @@ nav {
 .projects-wrapper {
   height: 100%;
   padding-top: 26vh;
-  padding-left: 19.5%;
+  padding-left: 10%;
 
   animation: fadein 0.5s;
 }
@@ -164,6 +164,8 @@ nav {
   left: 1.33rem;
 }
 
+/* ==== ABOUT PAGE ==== */
+
 .about-wrapper {
   height: 100%;
   padding-left: 19.5%;
@@ -184,6 +186,7 @@ nav {
   overflow: hidden; }
 
 .about-wrapper p {
+  line-height: 1.7;
   margin-top: 36px;
 }
 
@@ -193,10 +196,10 @@ nav {
   margin-top: 36px;
 }
 
-.contact-wrapper h4 {
+h4 {
   font-size: 0.8rem;
   letter-spacing: 1.8px;
-  /* color: #878787; */
+  color: #575756;
 }
 
 .contact-wrapper a {
@@ -225,6 +228,53 @@ nav {
 }
 
 
+/* ==== ARTICLES  ==== */
+
+.article-wrapper {
+  height: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 55vh;
+  padding-bottom: 10vh; /* Need to decide vh or px for padding-bottom */
+
+  animation: fadein 0.5s;
+}
+
+.article-heading h1 {
+  font-family: 'EB Garamond', serif;
+  font-size: 2.66rem;
+  font-weight: 500;
+  line-height: 1;
+  padding-bottom: 1.55rem;
+}
+
+.article-heading h2 {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.16rem;
+  font-weight: 400;
+  line-height: 1.3;
+  padding-bottom: 3.33rem;
+}
+
+.article-cover {
+  margin: auto -12% 44px -12%; /* top right bottom left */
+  width: 124%;
+}
+
+.article-info {
+  margin-bottom: 2.22rem;
+}
+
+.type-significant {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.9;
+  color: #000;
+  margin-right: 24px;
+  margin-bottom: 40px;
+}
+
 /* ==== RESPONSIVENESS ==== */
 
 @media screen and (min-width: 480px) { /* Tablets */
@@ -234,6 +284,10 @@ nav {
 
   .logo {
     margin-left: 94px;
+  }
+
+  .nav-links {
+    margin-right: 94px;
   }
 
   .projects-wrapper {
@@ -277,14 +331,14 @@ nav {
 
 @media screen and (min-width: 1440px) { /* Large Screens */
   .projects-wrapper h3 {
-    font-size: 1.18vw; /*17px;*/
-    letter-spacing: 0.17vw; /*2.5px;*/
-    padding-bottom: 0.9vw; /*13px;*/
+    font-size: 1.1vw; /*17px;*/
+    letter-spacing: 0.16vw; /*2.5px;*/
+    padding-bottom: 0.70vw; /*13px;*/
   }
 
   .projects-wrapper a {
-    font-size: 2.92vw; /*42px;*/
-    line-height: 4.52vw; /*65px;*/
+    font-size: 2.78vw; /*42px;*/
+    line-height: 4.45vw; /*65px;*/
   }
 
   .active::before {
