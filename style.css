@@ -264,9 +264,9 @@ nav {
 }
 
 .article-cover {
-  margin: auto -12% 44px -12%; /* top right bottom left */
-  width: 124%;
-  min-height: 480px;
+  margin: auto -14% 44px -14%; /* top right bottom left */
+  width: 128%;
+  min-height: 100vh;
 }
 
 .article-info {
