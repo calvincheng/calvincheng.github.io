@@ -21,6 +21,7 @@ html {
   font-weight: 400;
   line-height: 1.7;
   background-color: #f6f6f5; /* #f6f3f1 */
+  scroll-padding-top: 172px;
   scroll-behavior: smooth;
 }
 
