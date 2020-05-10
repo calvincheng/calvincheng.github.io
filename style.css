@@ -391,6 +391,11 @@ nav {
     margin-left: 94px;
   }
 
+  nav {
+    background-color: transparent;
+    min-height: 180px; /* change later */
+  }
+
   .nav-wrapper {
     z-index: 0;
   }
@@ -407,11 +412,6 @@ nav {
 @media screen and (min-width: 768px) { /* Laptops */
   html {
     font-size: 20px;
-  }
-
-  nav {
-    background-color: transparent;
-    min-height: 180px; /* change later */
   }
 
   .projects-wrapper {
