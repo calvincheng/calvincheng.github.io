@@ -1,2 +1,4 @@
 *.swp
+assets/styles/*.css
+!default.css
 

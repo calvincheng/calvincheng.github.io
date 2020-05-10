@@ -70,32 +70,31 @@ function inViewport2( element ) {
   return ( (topEdge > 0 && bottomEdge < window.innerHeight) );
 }
 
-let headingHeights = makeHeadingHeights();
+// Need to add delay to make sure stuff is loaded before calculating
+let headingHeights = makeHeadingHeights(); 
 
 // Listen for the scroll event
 document.addEventListener( 'scroll', event => {
     
   // Show/Hide chapter list
   let chapterWrapper = document.querySelector( '.chapter-list-wrapper' );
-//   let aboveElement = document.querySelector( '.article-cover' );
-//   if( inViewport( aboveElement ) && window.innerWidth >= 1024 ) {
-//     chapterWrapper.style.opacity = 1;
-//   } else {
-//     chapterWrapper.style.opacity = 0.9;
-//   }
   let coverElement = document.querySelector( '.article-cover' );
   if ( coverElement.getBoundingClientRect().bottom < 0 && window.innerWidth >= 1024 ) {
     chapterWrapper.style.opacity = 1;
   } else {
     chapterWrapper.style.opacity = 0;
   }
-  
 
   // Highlight current chapter
+  let offset = parseInt(getComputedStyle(document.querySelector('html')).scrollPaddingTop);
   let numChapters = document.querySelector( '.chapter-list-wrapper ul' ).childElementCount;
   let n = numChapters;
-  while (window.scrollY < headingHeights[n] && n > 1) {
+  let height = document.querySelector( `h3:nth-of-type(${n})` ).getBoundingClientRect().top
+             + window.scrollY - offset;
+  while (window.scrollY <= height - 1 && n > 1) {
     n--;
+    height = document.querySelector( `h3:nth-of-type(${n})` ).getBoundingClientRect().top 
+             + window.scrollY - offset;
   }
   for (let i = 1; i <= numChapters; i++) {
     document.querySelector( `.chapter:nth-of-type(${i}) span` ).classList.remove('chapter-current');
