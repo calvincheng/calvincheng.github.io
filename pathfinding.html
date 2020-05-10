@@ -56,11 +56,16 @@
             </li>
             <li class="chapter"> 
               <span onclick="scrollToId( 'subheading-3' )">
-                Modular menu design
+                Maze generation
               </span>
             </li>
             <li class="chapter"> 
               <span onclick="scrollToId( 'subheading-4' )">
+                Menu design
+              </span>
+            </li>
+            <li class="chapter"> 
+              <span onclick="scrollToId( 'subheading-5' )">
                 Putting it all together with Curses
               </span>
             </li>
@@ -92,13 +97,13 @@
         <!--
         <h3 style="margin: 0"></h3> Hacky fix for headingHeights to work -->
         <p>
-          <em style="color: #888">This post is still a work in progress.</em>
+          <em style="color: #888">Work in progress.</em>
         </p>
         <p>
           After reading up on Algorithms and Data Structures, a natural way to
-          progress was to consolidate what I've learnt through application. As
-          my weakest area was, by far, graph traversals and searches, I created
-          a small console application visualising several popular pathfinding
+          progress was to consolidate what I've learnt through practice. As my
+          weakest area was, by far, graph traversals and searches, I created a
+          small console application visualising several popular pathfinding
           algorithms to better understand their nuances and inner-workings. 
         </p>
         <h3 id="subheading-1">Board representation</h3>
@@ -109,34 +114,40 @@
           typically represented by an edge list or an adjacency matrix, the more
           intuitive data structure to use in this case would be would be a 2D
           array (i.e. a matrix), where each element is representative of a
-          vertex within the graph. Therefore, we take an object-oriented
-          approach and define a <code class="inline">Board</code> object of
-          width <code class="inline">w</code> and height <code
-            class="inline">h</code> initialised via </p>
+          vertex within the graph. We can provide further meaning to each
+          element by giving it a value – <code class="inline">0</code> for an
+          empty node, and <code class="inline">1</code> a wall node. For
+          example, setting the 2D array with
+        </p>
         <pre><code class="python"><!--
-        -->class Board:
-<!--    -->    def __init__(self, w, h):
-<!--    -->        self.w = w
-<!--    -->        self.h = h
-<!--    -->        self.board = [[0 for _ in range(w)] for _ in range(h)]<!--
+        -->board = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+<!--    -->         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+<!--    -->         [1, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+<!--    -->         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+<!--    -->         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+<!--    -->         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+<!--    -->         [1, 0, 0, 1, 1, 1, 0, 0, 0, 1],
+<!--    -->         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+<!--    -->         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+<!--    -->         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]<!--
      --></code></pre>
         <p>
-          where <code class="inline">0</code> represents an empty node, and
-          <code class="inline">1</code> a wall node.
+          gives the following result below.
         </p>
         <figure>
-          <img src="assets/img/default.png" alt="description">
-          <figcaption>The board matrix and its visual representation.</figcaption>
+          <div class="figure-wrapper" style="width:45%">
+            <img src="assets/img/board-01.png" alt="board">
+          </div>
         </figure>
         <p>
           Like most graph representations, it would be nice to have a convinent
           way of getting all the neighbours of a specific node. This can be done
-          by writing a method that takes a node's four neighbours, making sure
-          that they're not a wall node, and that they're actually within the
-          board.
+          by writing a small function that takes a node's four neighbours,
+          making sure that they're not a wall node, and that they're actually
+          within the board.
         </p>
         <pre><code class="python"><!--
-        -->def getNeighbours(self, node):
+        -->def getNeighbours(board, node):
 <!--    -->    '''Gets neighbouring free nodes within the board
 <!--    -->    node: (x, y) tuple
 <!--    -->    '''
@@ -144,13 +155,14 @@
 <!--    -->    dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 <!--    -->    nbrs = []
 <!--    -->    for dx, dy in dirs:
-<!--    -->        if self.inBoard(x+dx, y+dy) and self.board[y+dy][x+dx] != 1:
+<!--    -->        if inBoard(x+dx, y+dy) and board[y+dy][x+dx] != 1:
 <!--    -->            nbrs.append((x+dx, y+dy))
 <!--    -->    return nbrs
 <!--    -->
-<!--    -->def inBoard(self, x, y):
+<!--    -->def inBoard(board, x, y):
 <!--    -->    '''Helper function that returns TRUE if (x, y) is valid.'''
-<!--    -->    return (0 <= x < self.w) and (0 <= y < self.l)<!--
+<!--    -->    length, width = len(board), len(board[0])
+<!--    -->    return (0 <= x < width) and (0 <= y < length)<!--
                 --></code></pre>
         <h3 id="subheading-2">Pathfinding algorithms</h3>
         <p>
@@ -201,13 +213,13 @@
           Djikstra's algorithm.
         </p>
         <p>
-          With the costs acknowledged, we can do even better by considering
-          the distance of each node to the goal. In other words, the algorithm
-          is encouraged to search nodes which are closer to the goal first. This
-          is achieved with a heuristic, calculated as the distance (calculated
-          typically as the Manhattan or Euclidean distance) from the node to the
-          goal. Incorporating the heuristic into the search leads us to the A*
-          search algorithm.
+          With the costs acknowledged, we can do even better by considering the
+          distance of each node to the goal as well. In other words, the
+          algorithm is encouraged to search nodes which are closer to the goal
+          first. This is achieved with a heuristic, calculated as the distance
+          (calculated typically as the Manhattan or Euclidean distance) from the
+          node to the goal. Incorporating the heuristic into the search leads us
+          to the A* search algorithm.
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
@@ -223,7 +235,7 @@
           path without visiting more nodes than it needs to. If Dijkstra's
           algorithm is the one extreme which prioritises exploration
           based only on cost, best-first or greedy search is the other extreme where
-          it only priotises heuristic.
+          it only prioritises heuristic.
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
@@ -239,8 +251,9 @@
           ultimately resulting in a non-optimal path.
         </p>
         <p>
-          Lastly, the application also supports bidirectional search to try to
-          increase speeds further, although optimality is not guaranteed.
+          Lastly, the application also supports bidirectional version of each
+          algorithm to try to further increase their speeds, although optimality
+          is not guaranteed.
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
@@ -251,16 +264,14 @@
           </div>
         </figure>
         <p>
-          To those intersted in implementing these algorithms themselves, Amit 
-          Patel (also known as RedBlobGames) has written <a class="article-link" 
+          To those intersted in implementing these algorithms themselves, I
+          would highly recommend you to read Amit Patel's <a class="article-link"
           href="https://www.redblobgames.com/pathfinding/a-star/implementation.html">
-          an excellent article</a> on pathfinding algorithms. I would highly
-          recommend anyone interested in implementing search algorithms
-          themselves to give it a read.
-        </p>
-        <h3 id="subheading-3">Modular menu design</h3>
-        <p>
-        <h3 id="subheading-4">Putting it all together with Curses</h3>
+          excellent tutorial</a> on pathfinding algorithms, where he provides a
+        much more thorough and in-depth explanation of how they work.</p>
+        <h3 id="subheading-3">Maze generation</h3>
+        <h3 id="subheading-4">Menu design</h3>
+        <h3 id="subheading-5">Putting it all together with Curses</h3>
         <p>
           The code for this project can be <a class="article-link"
             href="https://www.github.com/calvincheng/Pathfinding-Visualiser">found

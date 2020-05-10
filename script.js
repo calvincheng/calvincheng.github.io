@@ -13,7 +13,7 @@ function scrollToId( id ) {
   } else {
     let offset = parseInt(getComputedStyle(document.querySelector('html')).scrollPaddingTop);
     let y = element.getBoundingClientRect().top + window.scrollY - offset;
-    smoothScrollTo(0, y, 600);
+    smoothScrollTo(0, y, 800);
   }
 }
 
@@ -75,7 +75,6 @@ let headingHeights = makeHeadingHeights();
 
 // Listen for the scroll event
 document.addEventListener( 'scroll', event => {
-    
   // Show/Hide chapter list
   let chapterWrapper = document.querySelector( '.chapter-list-wrapper' );
   let coverElement = document.querySelector( '.article-cover' );

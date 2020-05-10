@@ -320,7 +320,9 @@ nav {
   display: none;
   transition-property: display, opacity;
   transition-duration: 0.3s, 0.3s;
-  transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out, ease-in-out;
+  /* Force hardware acceleration for Safari otherwise contents disappear */
+  -webkit-perspective: 1000; 
 }
 
 .chapter {
