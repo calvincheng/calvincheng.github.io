@@ -46,12 +46,12 @@
           <ul>
             <li class="chapter">
               <span class="chapter-current" onclick="scrollToId( 'subheading-1' )">
-                Board representation
+                Pathfinding algorithms
               </span>
             </li>
             <li class="chapter"> 
               <span onclick="scrollToId( 'subheading-2' )">
-                Pathfinding algorithms
+                The board
               </span>
             </li>
             <li class="chapter"> 
@@ -104,78 +104,15 @@
           progress was to consolidate what I've learnt through practice. As my
           weakest area was, by far, graph traversals and searches, I created a
           small console application visualising several popular pathfinding
-          algorithms to better understand their nuances and inner-workings. 
+          algorithms to better understand their features.
         </p>
-        <h3 id="subheading-1">Board representation</h3>
+        <h3 id="subheading-1">Pathfinding algorithms</h3>
         <p>
-          A generic grid can be considered as a specific type of graph, where
-          each node is connected to its four orthogonal neighbours and the
-          distance to each neighbour are identical. Although graphs are
-          typically represented by an edge list or an adjacency matrix, the more
-          intuitive data structure to use in this case would be would be a 2D
-          array (i.e. a matrix), where each element is representative of a
-          vertex within the graph. We can provide further meaning to each
-          element by giving it a value – <code class="inline">0</code> for an
-          empty node, and <code class="inline">1</code> a wall node. For
-          example, setting the 2D array with
+          Several pathfinding algorithms are implemented within the application.
+          One of the simplest methods involves breadth-first search – from a
+          starting node, we explore its neighbours, and then its neighbours'
+          neighbours, and so on until the goal is discovered.
         </p>
-        <pre><code class="python"><!--
-        -->board = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-<!--    -->         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-<!--    -->         [1, 0, 0, 0, 1, 1, 1, 1, 1, 1],
-<!--    -->         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-<!--    -->         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-<!--    -->         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
-<!--    -->         [1, 0, 0, 1, 1, 1, 0, 0, 0, 1],
-<!--    -->         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
-<!--    -->         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
-<!--    -->         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]<!--
-     --></code></pre>
-        <p>
-          gives the following result below.
-        </p>
-        <figure>
-          <div class="figure-wrapper" style="width:45%">
-            <img src="assets/img/board-01.png" alt="board">
-          </div>
-        </figure>
-        <p>
-          Like most graph representations, it would be nice to have a convinent
-          way of getting all the neighbours of a specific node. This can be done
-          by writing a small function that takes a node's four neighbours,
-          making sure that they're not a wall node, and that they're actually
-          within the board.
-        </p>
-        <pre><code class="python"><!--
-        -->def getNeighbours(board, node):
-<!--    -->    '''Gets neighbouring free nodes within the board
-<!--    -->    node: (x, y) tuple
-<!--    -->    '''
-<!--    -->    x, y = node
-<!--    -->    dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-<!--    -->    nbrs = []
-<!--    -->    for dx, dy in dirs:
-<!--    -->        if inBoard(x+dx, y+dy) and board[y+dy][x+dx] != 1:
-<!--    -->            nbrs.append((x+dx, y+dy))
-<!--    -->    return nbrs
-<!--    -->
-<!--    -->def inBoard(board, x, y):
-<!--    -->    '''Helper function that returns TRUE if (x, y) is valid.'''
-<!--    -->    length, width = len(board), len(board[0])
-<!--    -->    return (0 <= x < width) and (0 <= y < length)<!--
-                --></code></pre>
-        <h3 id="subheading-2">Pathfinding algorithms</h3>
-        <p>
-          One of the simplest pathfinding methods involves breadth-first search –
-          from a starting node, we explore its neighbours, and then its
-          neighbours' neighbours, and so on until the goal is discovered.
-        </p>
-        <figure> 
-          <div style="width:85%" class="figure-wrapper">
-            <img src="assets/img/bfs.png" alt="breadth first search">
-            <figcaption>Breadth first search running on a grid.</figcaption>
-          </div>
-        </figure>
         <p>
           However, this is a naive search; the algorithm has no concept of the
           costs of travelling from node to node, nor does it prioritise which
@@ -194,10 +131,10 @@
           explored first. Dijkstra's algorithm adds upon this by introducing the
           concept of priority for each element within the queue. In this new
           structure, aptly named as a priority queue, neighbours which are less
-          costly are prioritised to be visited first. The priority queue
-          therefore gives Dijkstra's algorithm a dynamic advantage over
-          breadth-first search as it is able to reprioritise which neighbours to
-          visit as the board is explored.
+          costly to visit are explored first. The priority queue therefore gives
+          Dijkstra's algorithm a dynamic advantage over breadth-first search as
+          it is able to continuously reprioritise which neighbours to visit as
+          the board is explored.
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
@@ -210,13 +147,15 @@
         <p>
           In this case, as the cost between each node is uniform, there is
           no discernable difference between a breadth-first search and
-          Djikstra's algorithm.
+          Djikstra's algorithm. However, if weighted (higher cost) nodes are
+          implemented in the future, we can expect the exploration to skirt
+          around them.
         </p>
         <p>
-          With the costs acknowledged, we can do even better by considering the
+          With costs acknowledged, we can do even better by considering the
           distance of each node to the goal as well. In other words, the
-          algorithm is encouraged to search nodes which are closer to the goal
-          first. This is achieved with a heuristic, calculated as the distance
+          algorithm is encouraged to first search nodes which are closer to the
+          goal. This is achieved with a heuristic, calculated as the distance
           (calculated typically as the Manhattan or Euclidean distance) from the
           node to the goal. Incorporating the heuristic into the search leads us
           to the A* search algorithm.
@@ -235,7 +174,7 @@
           path without visiting more nodes than it needs to. If Dijkstra's
           algorithm is the one extreme which prioritises exploration
           based only on cost, best-first or greedy search is the other extreme where
-          it only prioritises heuristic.
+          it only prioritises heuristics.
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
@@ -251,8 +190,8 @@
           ultimately resulting in a non-optimal path.
         </p>
         <p>
-          Lastly, the application also supports bidirectional version of each
-          algorithm to try to further increase their speeds, although optimality
+          Lastly, the application also supports bidirectional variants of each
+          algorithm. They tend to improve search speeds, although optimality
           is not guaranteed.
         </p>
         <figure>
@@ -269,7 +208,124 @@
           href="https://www.redblobgames.com/pathfinding/a-star/implementation.html">
           excellent tutorial</a> on pathfinding algorithms, where he provides a
         much more thorough and in-depth explanation of how they work.</p>
+        <h3 id="subheading-2">The board</h3>
+        <p>
+          A generic grid can be considered as a specific type of graph, where
+          each node is connected to its four orthogonal neighbours and the
+          distance to each neighbour are identical. Although graphs are
+          typically represented by an edge list or an adjacency matrix, in this
+          case a 2D array is used as it is more intuitive. Each element within
+          the array is being a vertex within the graph, with its state
+          expressed through its value – <code class="inline">0</code> for an
+          empty node, and <code class="inline">1</code> a wall node. For
+          example, setting the 2D array as
+        </p>
+        <pre><code class="python"><!--
+        -->board = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+<!--    -->         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+<!--    -->         [1, 0, 0, 0, 1, 1, 1, 1, 1, 1],
+<!--    -->         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+<!--    -->         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+<!--    -->         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+<!--    -->         [1, 0, 0, 1, 1, 1, 0, 0, 0, 1],
+<!--    -->         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+<!--    -->         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+<!--    -->         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]<!--
+     --></code></pre>
+        <p>
+          gives the equivalent board below.
+        </p>
+        <figure>
+          <div class="figure-wrapper" style="width:50%">
+            <img src="assets/img/board-01.png" alt="board">
+          </div>
+        </figure>
+        <p>
+          The application also allows board-editing, featuring the ability to
+          move start and goal nodes as well as create and destroy walls. As
+          mouse support is inconsistent across different terminals,
+          board-editing is performed instead via a keyboard-controlled cursor. 
+        </p>
+        <p>
+          The user is then able to navigate using the arrow keys, and perform
+          actions using the spacebar. The action is context dependent – pressing
+          the spacebar as the cursor is over a wall node puts the cursor in
+          the erasing state, whilst pressing the spacebar as the cursor is over
+          a blank node puts it in a wall-building state.
+        </p>
+        <p>
+          In addition to the cursor, basic movement of the start and goal nodes
+          using the arrow keys is also supported. Their movements are limited to
+          only free nodes, such that they cannot move through walls. When using
+          the cursor, the start and goal nodes can also be instantly placed upon
+          the cursor location with the 0 and 1 keys.
+        </p>
+        <p>
+          As the board is edited, existing search visualisations automatically
+          update to the new changes, adding a layer of interactivity to the
+          editing process.
+        </p>
+        <figure>
+          <div style="width:100%" class="figure-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="assets/mov/boardEditing2.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Updated search visualisations during board editing.</figcaption>
+          </div>
+        </figure>
         <h3 id="subheading-3">Maze generation</h3>
+        <p>
+          Basic maze generation is also included to provide extra variety to the
+          board environment. The maze is generated via a depth-first
+          search strategy which tunnels passages within an board composed
+          initially of only walls.
+        </p>
+        <figure>
+          <div style="width:100%" class="figure-wrapper">
+            <video autoplay loop muted playsinline>
+              <source src="assets/mov/mazeGen.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Maze generation and search.</figcaption>
+          </div>
+        </figure>
+        <p>
+          A neat feature of using depth-first search is that its recursive
+          nature allows the function to be written surprisingly succintly:
+        </p>
+        <pre><code class="python"><!--
+     -->def mazify(self):
+<!-- -->'''Generates random maze using DFS'''
+<!-- -->    self.board = [[1 for _ in range(self.w)] for _ in range(self.l)]
+<!-- -->    x = random.randrange(1,self.w - 1,2)
+<!-- -->    y = random.randrange(1,self.l - 1,2)
+<!-- -->    self.board[y][x] = 0
+<!-- -->    self.carve(x, y)
+<!-- -->    
+<!-- -->    # Delete walls directly above start and goal
+<!-- -->    start_x, start_y = self.start
+<!-- -->    goal_x, goal_y = self.goal
+<!-- -->    self.board[start_y][start_x] = 0
+<!-- -->    self.board[goal_y][goal_x] = 0
+<!-- -->
+<!-- -->def carve(self, x, y):
+<!-- -->    '''Helper recursive function for DFS maze generation.
+<!-- -->    "Carves" a tunnel from position (x, y).
+<!-- -->    '''
+<!-- -->    DIRS = [(0, -2), (2, 0), (0, 2), (-2, 0)] # N, E, S, W
+<!-- -->    random.shuffle(DIRS)
+<!-- -->    for dx, dy in DIRS:
+<!-- -->        if self.inBoard(x+dx, y+dy) and self.board[y+dy][x+dx] == 1:
+<!-- -->            # Open wall between (x, y) and (x+dx, y+dy)
+<!-- -->            for i in range(min(x, x+dx), max(x, x+dx)+1):
+<!-- -->                for j in range(min(y, y+dy), max(y, y+dy)+1):
+<!-- -->                    self.board[j][i] = 0
+<!-- -->            self.carve(x+dx, y+dy)<!--
+                --></code></pre>
+        <p>
+          Granted, the size of the maze is limited by the maximum recursion
+          depth of Python. However, as the dimensions of the board is fixed in this
+          case, it's not really a problem.
+        </p>
         <h3 id="subheading-4">Menu design</h3>
         <h3 id="subheading-5">Putting it all together with Curses</h3>
         <p>

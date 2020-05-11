@@ -473,7 +473,7 @@ nav {
 
   .projects-wrapper a {
     font-size: 2.78vw; /*42px;*/
-    line-height: 4.45vw; /*65px;*/
+    line-height: 4.75vw; /*65px;*/ /* 4.45vw looks p good */
   }
 
   .active::before {
