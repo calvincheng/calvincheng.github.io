@@ -105,7 +105,6 @@
         </p>
         <h3 id="subheading-1">Pathfinding algorithms</h3>
         <p>
-          Several pathfinding algorithms are implemented within the application.
           One of the simplest methods involves breadth-first search – from a
           starting node, we explore its neighbours, and then its neighbours'
           neighbours, and so on until the goal is discovered.
@@ -125,13 +124,12 @@
           Typically, a breadth-first search is implemented by placing the
           neighbours of visited nodes inside a queue. The first-in-first-out
           (FIFO) property of queues allows the nodes closest to the start to be
-          explored first. Dijkstra's algorithm adds upon this by introducing the
-          concept of priority for each element within the queue. In this new
-          structure, aptly named as a priority queue, neighbours which are less
-          costly to visit are explored first. The priority queue therefore gives
-          Dijkstra's algorithm a dynamic advantage over breadth-first search as
-          it is able to continuously reprioritise which neighbours to visit as
-          the board is explored.
+          explored first. Dijkstra's algorithm builds upon this by introducing
+          the concept of priority for each element within the queue such that
+          neighbours which are less costly to visit are explored first. The
+          priority queue therefore gives Dijkstra's algorithm a dynamic
+          advantage over breadth-first search as it is able to continuously
+          reprioritise which neighbours to visit as the board is explored.
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
@@ -149,13 +147,12 @@
           around them.
         </p>
         <p>
-          With costs acknowledged, we can do even better by considering the
-          distance of each node to the goal as well. In other words, the
-          algorithm is encouraged to first search nodes which are closer to the
-          goal. This is achieved with a heuristic, calculated as the distance
-          (calculated typically as the Manhattan or Euclidean distance) from the
-          node to the goal. Incorporating the heuristic into the search leads us
-          to the A* search algorithm.
+          We can take a step further by considering the distance of each node to
+          the goal as well, where the algorithm is encouraged to first search
+          nodes which are closer to the goal. This is achieved with a heuristic,
+          calculated as the distance (typically the Manhattan or Euclidean
+          distance) from the node to the goal. Incorporating the heuristic into
+          the search leads us to the A* search algorithm.
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
@@ -348,14 +345,19 @@
               class="inline">Button</code> classes, each with their own children
             to further specify their uses. The menu items are then provided to
             the primary <code class="inline">Menu</code> object as an argument
-            during its construction. Overall, the menu is able to support both
-            vertical and horizontal navigation.
+            during its construction.
         </p>
         <p>
-          If you would like to try out the application yourself, the code for
-          this project can be <a class="article-link"
-          href="https://www.github.com/calvincheng/Pathfinding-Visualiser">found
-          on Github</a>.
+          Overall, the menu features single and multiple choice radios to toggle
+          search parameters, buttons to perform actions, and both horizontal and
+          vertical navigation. If needed, it can be ported and reused for other
+          terminal-based applications in the future.
+        </p>
+        <p>
+          To try out the application yourself, download or clone the project
+          from <a class="article-link"
+          href="https://www.github.com/calvincheng/Pathfinding-Visualiser">this
+          Github repo</a>.
         </p>
       </div>
     </div>
