@@ -64,11 +64,6 @@
                 Menu design
               </span>
             </li>
-            <li class="chapter"> 
-              <span onclick="scrollToId( 'subheading-5' )">
-                Putting it all together with Curses
-              </span>
-            </li>
           </ul>
         </div>
       </div>
@@ -97,7 +92,9 @@
         <!--
         <h3 style="margin: 0"></h3> Hacky fix for headingHeights to work -->
         <p>
-          <em style="color: #888">Work in progress.</em>
+          The code for this project can be <a class="article-link"
+          href="https://www.github.com/calvincheng/Pathfinding-Visualiser">found
+          on Github</a>.
         </p>
         <p>
           After reading up on Algorithms and Data Structures, a natural way to
@@ -138,7 +135,7 @@
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
-            <video autoplay loop muted playsinline>
+            <video autoplay loop muted>
               <source src="assets/mov/dijkstra.mp4" type="video/mp4" />
             </video>
             <figcaption>Dijkstra's algorithm.</figcaption>
@@ -162,7 +159,7 @@
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
-            <video autoplay loop muted playsinline>
+            <video autoplay loop muted>
               <source src="assets/mov/astar-euclidean.mp4" type="video/mp4" />
             </video>
             <figcaption>A* search using Euclidean distance as its heuristic.</figcaption>
@@ -178,7 +175,7 @@
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
-            <video autoplay loop muted playsinline>
+            <video autoplay loop muted>
               <source src="assets/mov/bestfirst-manhattan.mp4" type="video/mp4" />
             </video>
             <figcaption>Greedy search using Manhattan distance as its heuristic.</figcaption>
@@ -196,7 +193,7 @@
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
-            <video autoplay loop muted playsinline>
+            <video autoplay loop muted>
               <source src="assets/mov/dijkstra-bd.mp4" type="video/mp4" />
             </video>
             <figcaption>Bidirectional Dijkstra's search.</figcaption>
@@ -267,7 +264,7 @@
         </p>
         <figure>
           <div style="width:100%" class="figure-wrapper">
-            <video autoplay loop muted playsinline>
+            <video autoplay loop muted>
               <source src="assets/mov/boardEditing2.mp4" type="video/mp4" />
             </video>
             <figcaption>Updated search visualisations during board editing.</figcaption>
@@ -282,7 +279,7 @@
         </p>
         <figure>
           <div style="width:100%" class="figure-wrapper">
-            <video autoplay loop muted playsinline>
+            <video autoplay loop muted>
               <source src="assets/mov/mazeGen.mp4" type="video/mp4" />
             </video>
             <figcaption>Maze generation and search.</figcaption>
@@ -290,7 +287,8 @@
         </figure>
         <p>
           A neat feature of using depth-first search is that its recursive
-          nature allows the function to be written surprisingly succintly:
+          nature allows the function to be written in a surprisingly few number
+          of lines.
         </p>
         <pre><code class="python"><!--
      -->def mazify(self):
@@ -327,11 +325,37 @@
           case, it's not really a problem.
         </p>
         <h3 id="subheading-4">Menu design</h3>
-        <h3 id="subheading-5">Putting it all together with Curses</h3>
         <p>
-          The code for this project can be <a class="article-link"
-            href="https://www.github.com/calvincheng/Pathfinding-Visualiser">found
-            on Github</a>.
+          Tying everything together, a menu was created to provide easy access
+          to functions as well as provide additional information if needed (such
+          as instructions when editing the board, or displaying the current
+          search method used). 
+        </p>
+        <figure>
+          <!-- disgustingly hardcoded -->
+          <div style="width: 150px" class="figure-wrapper">
+            <video height="520px" autoplay loop muted>
+              <source src="assets/mov/menu.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Menu navigation.</figcaption>
+          </div>
+        </figure>
+        <p>
+          To keep the menu flexible such that items may be reordered and renamed
+          when needed, an object-oriented approach was taken. Menu items are
+            split into <code class="inline">Text</code>, <code
+              class="inline">Radio</code> and <code
+              class="inline">Button</code> classes, each with their own children
+            to further specify their uses. The menu items are then provided to
+            the primary <code class="inline">Menu</code> object as an argument
+            during its construction. Overall, the menu is able to support both
+            vertical and horizontal navigation.
+        </p>
+        <p>
+          If you would like to try out the application yourself, the code for
+          this project can be <a class="article-link"
+          href="https://www.github.com/calvincheng/Pathfinding-Visualiser">found
+          on Github</a>.
         </p>
       </div>
     </div>
