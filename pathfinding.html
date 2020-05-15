@@ -51,7 +51,7 @@
             </li>
             <li class="chapter"> 
               <span onclick="scrollToId( 'subheading-2' )">
-                The board
+                Board editing
               </span>
             </li>
             <li class="chapter"> 
@@ -133,7 +133,7 @@
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
-            <video autoplay loop muted>
+            <video autoplay loop muted playsinline>
               <source src="assets/mov/dijkstra.mp4" type="video/mp4" />
             </video>
             <figcaption>Dijkstra's algorithm.</figcaption>
@@ -156,7 +156,7 @@
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
-            <video autoplay loop muted>
+            <video autoplay loop muted playsinline>
               <source src="assets/mov/astar-euclidean.mp4" type="video/mp4" />
             </video>
             <figcaption>A* search using Euclidean distance as its heuristic.</figcaption>
@@ -172,7 +172,7 @@
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
-            <video autoplay loop muted>
+            <video autoplay loop muted playsinline>
               <source src="assets/mov/bestfirst-manhattan.mp4" type="video/mp4" />
             </video>
             <figcaption>Greedy search using Manhattan distance as its heuristic.</figcaption>
@@ -190,7 +190,7 @@
         </p>
         <figure>
           <div style="width:85%" class="figure-wrapper">
-            <video autoplay loop muted>
+            <video autoplay loop muted playsinline>
               <source src="assets/mov/dijkstra-bd.mp4" type="video/mp4" />
             </video>
             <figcaption>Bidirectional Dijkstra's search.</figcaption>
@@ -202,50 +202,19 @@
           href="https://www.redblobgames.com/pathfinding/a-star/implementation.html">
           excellent tutorial</a> on pathfinding algorithms, where he provides a
         much more thorough and in-depth explanation of how they work.</p>
-        <h3 id="subheading-2">The board</h3>
+        <h3 id="subheading-2">Board editing</h3>
         <p>
-          A generic grid can be considered as a specific type of graph, where
-          each node is connected to its four orthogonal neighbours and the
-          distance to each neighbour are identical. Although graphs are
-          typically represented by an edge list or an adjacency matrix, in this
-          case a 2D array is used as it is more intuitive. Each element within
-          the array is being a vertex within the graph, with its state
-          expressed through its value – <code class="inline">0</code> for an
-          empty node, and <code class="inline">1</code> a wall node. For
-          example, setting the 2D array as
-        </p>
-        <pre><code class="python"><!--
-        -->board = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-<!--    -->         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-<!--    -->         [1, 0, 0, 0, 1, 1, 1, 1, 1, 1],
-<!--    -->         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-<!--    -->         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-<!--    -->         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
-<!--    -->         [1, 0, 0, 1, 1, 1, 0, 0, 0, 1],
-<!--    -->         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
-<!--    -->         [1, 0, 0, 1, 0, 0, 0, 0, 0, 1],
-<!--    -->         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]<!--
-     --></code></pre>
-        <p>
-          gives the equivalent board below.
-        </p>
-        <figure>
-          <div class="figure-wrapper" style="width:50%">
-            <img src="assets/img/board-01.png" alt="board">
-          </div>
-        </figure>
-        <p>
-          The application also allows board-editing, featuring the ability to
-          move start and goal nodes as well as create and destroy walls. As
+          The application also allows board-editing, featuring movable start and
+          goal nodes as well as the ability to create and destroy walls. As
           mouse support is inconsistent across different terminals,
           board-editing is performed instead via a keyboard-controlled cursor. 
         </p>
         <p>
-          The user is then able to navigate using the arrow keys, and perform
-          actions using the spacebar. The action is context dependent – pressing
-          the spacebar as the cursor is over a wall node puts the cursor in
-          the erasing state, whilst pressing the spacebar as the cursor is over
-          a blank node puts it in a wall-building state.
+          The user is then able to navigate the cursor using the arrow keys, and
+          perform actions using the spacebar. The action is context dependent –
+          pressing the spacebar as the cursor is over a wall node puts the
+          cursor in the erasing state, whilst pressing the spacebar as the
+          cursor is over a blank node puts it in a wall-building state.
         </p>
         <p>
           In addition to the cursor, basic movement of the start and goal nodes
@@ -261,7 +230,7 @@
         </p>
         <figure>
           <div style="width:100%" class="figure-wrapper">
-            <video autoplay loop muted>
+            <video autoplay loop muted playsinline>
               <source src="assets/mov/boardEditing2.mp4" type="video/mp4" />
             </video>
             <figcaption>Updated search visualisations during board editing.</figcaption>
@@ -276,7 +245,7 @@
         </p>
         <figure>
           <div style="width:100%" class="figure-wrapper">
-            <video autoplay loop muted>
+            <video autoplay loop muted playsinline>
               <source src="assets/mov/mazeGen.mp4" type="video/mp4" />
             </video>
             <figcaption>Maze generation and search.</figcaption>
@@ -295,12 +264,6 @@
 <!-- -->    y = random.randrange(1,self.l - 1,2)
 <!-- -->    self.board[y][x] = 0
 <!-- -->    self.carve(x, y)
-<!-- -->    
-<!-- -->    # Delete walls directly above start and goal
-<!-- -->    start_x, start_y = self.start
-<!-- -->    goal_x, goal_y = self.goal
-<!-- -->    self.board[start_y][start_x] = 0
-<!-- -->    self.board[goal_y][goal_x] = 0
 <!-- -->
 <!-- -->def carve(self, x, y):
 <!-- -->    '''Helper recursive function for DFS maze generation.
@@ -331,7 +294,7 @@
         <figure>
           <!-- disgustingly hardcoded -->
           <div style="width: 150px" class="figure-wrapper">
-            <video height="520px" autoplay loop muted>
+            <video height="520px" autoplay loop muted playsinline>
               <source src="assets/mov/menu.mp4" type="video/mp4" />
             </video>
             <figcaption>Menu navigation.</figcaption>
