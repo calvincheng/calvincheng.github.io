@@ -93,12 +93,23 @@ img {
   object-fit: cover;
 }
 
+.sub-image {
+  width: 44%;
+  float: left;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
 video {
   width: 100%;
 }
 
-li {
+ul li {
   list-style-type: none; /* removes bullets */
+}
+
+ol {
+  padding-left: 3rem;
 }
 
 a {
@@ -380,6 +391,12 @@ nav {
   color: #888;
 }
 
+.design-images {
+  width: 100%;
+  max-width: 1340px;
+  margin: auto; 
+}
+
 /* ==== RESPONSIVENESS ==== */
 
 @media screen and (min-width: 480px) { /* Tablets */
@@ -487,7 +504,10 @@ nav {
 
   .article-info-wrapper, .article-body {
     padding-left: calc((100% - 650px) / 2);
-    padding-right: calc((100% - 650px) / 2);
+  }
+
+  .design-images {
+    margin: auto;
   }
 
   .chapter-list-anchor {
