@@ -7,8 +7,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" href="assets/svg/logo.svg">
     <link rel="stylesheet" href="style.css">
-    <!-- Need to redownload fonts? Check -->
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Nunito+Sans:wght@400;600;700&display=fallback" rel="stylesheet">
+    <!--  For syntax highlighting -->
+    <link rel="stylesheet" href="assets/styles/default.css">
+    <script src="highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <div class="nav-wrapper">
     <nav>
@@ -124,7 +127,7 @@
           • High level plan for each step (edge, print, output)
         -->
         <p>
-        I first discovered the Ukranian artist <a class="article-link"
+          I first discovered the Ukranian artist <a class="article-link"
             href="https://stanislavapinchuk.com/">Stanislava Pinchuk</a>
           (aka m-i-s-o) several years ago, where I was originally drawn by
           pictures of hand-poked tattoos she would give to her friends. The
@@ -137,18 +140,18 @@
         <figure>
           <div style="width:70%" class="figure-wrapper">
             <img src="assets/img/fallout.jpg" alt="Stanislava
-            Pinchuk – FallOut">
-            <figcaption>Stanislava Pinchuk – FallOut</figcaption>
+            Pinchuk – Fallout">
+            <figcaption>Stanislava Pinchuk – Fallout</figcaption>
           </div>
         </figure>
         <p>
-          Another indirect motivator for the project is based upon an exhibition
-          I saw at the Barbican Centre named "AI: More than Human", where one of
-          the exhibits featured <a class="article-link"
-            href="http://annaridler.com/myriad-tulips">Myriad (Tulips) by Anna
-            Ridler</a> which consisted of a neat grid of images of AI-generated
-          tulips. The artwork made me think about the relationship between
-          software and art – specifically, whether the extent of which software
+          Another indirect motivator for the project is based upon a work
+          I saw at the Barbican Centre's exhibit <em>AI: More than Human</em>, 
+          named <a class="article-link"
+            href="http://annaridler.com/myriad-tulips">Myriad (Tulips)</a>. 
+          Created by artist Anna Ridler, it consists of a neat grid of images of
+          AI-generated tulips. The artwork made me think about the relationship
+          between software and art – specifically, the extent to which software
           inspires or imitates art in the future.
         </p>
         <figure>
@@ -161,7 +164,7 @@
           To see whether it's possible to imitate Pinchuk's artwork myself, I
           experimented with a multi-step process to generate images of a similar
           style. First, the program would take an imput image, and identify its
-          edges with an edge-detection algorithm. Then, it would take those
+          edges with an edge detection algorithm. Then, it would take those
           detected edges and transform them into dotted lines. Finally, those
           dotted lines would then be printed upon a blank output image.
         </p>
@@ -170,6 +173,121 @@
             • Overview of each step in Canny
             • Overview pictures showing each step
         -->
+        <p>
+          The Canny edge detection algorithm was chosen due to its reliability
+          and popularity. According to its <a class="article-link"
+          href="https://en.wikipedia.org/wiki/Canny_edge_detector">Wikipedia
+          article</a>, it may be broken down into five distinct steps:
+        </p>
+        <p>
+          <ol>
+            <li>Applying Gaussian blur to remove noise.</li>
+            <li>Detect sudden changes in intensity.</li>
+            <li>Thin potential edges.</li>
+            <li>Threshold edges into strong, weak and zero categories.</li>
+            <li>Perform hysteresis to track edges.</li>
+          </ol>
+        </p>
+        <p>
+          To apply Gaussian blur, a Gaussian kernel is convolved over the image.
+          Although a convolution can be implemented manually using several
+          for-loops, it is better (and more convenient) to utilise SciPy's
+          <code class="inline">ndimage.convolve()</code> to take advantage 
+          of its optimisations (e.g. using a FFT-based  method when it is faster
+          to do so).
+        </p>
+        <pre><code class="python"><!--
+     -->def gaussian_filter(img, sigma = 1):
+<!-- -->    '''Applies Gaussian filter to image
+<!-- -->    :img: Input image
+<!-- -->    :sigma: Standard deviation – higher is blurrier
+<!-- -->     '''
+<!-- -->    kernel = generate_gaussian_kernel(sigma)
+<!-- -->    result = ndimage.convolve(img, kernel, mode='nearest') 
+<!-- -->    return result
+<!-- --> 
+<!-- --># Helper functions
+<!-- -->def generate_gaussian_kernel(sigma = 1, n = 5):
+<!-- -->    '''Generates a n-by-n zero-mean Gaussian kernel
+<!-- -->    :sigma: Standard deviation used in the Gaussian function
+<!-- -->    :n: Edge length
+<!-- -->    '''
+<!-- -->    return [[getGauss(x - n//2, y - n//2, 0, sigma) for x in range(n)] for y in range(n)]
+<!-- --> 
+<!-- -->def getGauss(x, y, mu, sigma):
+<!-- -->    '''Generates Guassian function G(x, y)
+<!-- -->    :mu: Average
+<!-- -->    :sigma: Standard deviation
+<!-- -->    '''
+<!-- -->    coeff1 = 1 / math.sqrt(2 * math.pi * sigma**2)
+<!-- -->    coeff2 = math.exp(-(x**2 + y**2) / (2 * sigma**2))
+<!-- -->    return coeff1 * coeff2<!--
+     --></code></pre>
+        Running the Gaussian blur gives the resulting change:
+        <figure>
+          <div style="width:80%" class="figure-wrapper">
+            <img class="sub-image" src="assets/img/step0.png">
+            <img class="sub-image" src="assets/img/step1.png">
+            <figcaption>Before (left) and after (right) performing Gaussian blur.</figcaption>
+          </div>
+        </figure>
+        <p>
+          The second step involves detecting sudden changes in intensity (i.e.
+          an edge). This is performed via another kernel; in this case, the
+          Sobel operator. Convolving the Sobel operator over the image in both
+          horizontal (x) and vertical (y) directions provides the resulting
+          images <code class="inline">G_x</code> and <code
+          class="inline">G_y</code> where each point in the images represents an
+          intensity gradient in the results' respective direction.
+        </p>
+        <figure>
+          <div style="width:85%" class="figure-wrapper">
+            <img src="assets/img/sobelKernels.png" alt="Sobel Kernels">
+            <figcaption>The Sobel operators in both horizontal (x) and vertical (y) directions.</figcaption>
+          </div>
+        </figure>
+        <p>
+          The two resulting image gradients can then be combined to calculate
+          the overall magnitude and direction via standard vector maths.
+        </p>
+        <pre><code class="python"><!--
+     -->def sobel(img):
+<!-- -->    '''Outputs sobel magnitude and direction (in degrees)
+<!-- -->    :img: Input image
+<!-- -->    '''
+<!-- -->    SOBEL_X = np.array([[ 1,  0, -1],
+<!-- -->                        [ 2,  0, -2],
+<!-- -->                        [ 1,  0, -1]])
+<!-- -->
+<!-- -->    SOBEL_Y = np.array([[ 1,  2,  1],
+<!-- -->                        [ 0,  0,  0],
+<!-- -->                        [-1, -2, -1]])
+<!-- -->
+<!-- -->    G_x = ndimage.convolve(img, SOBEL_X, mode='nearest')
+<!-- -->    G_y = ndimage.convolve(img, SOBEL_Y, mode='nearest')
+<!-- -->
+<!-- -->    G = np.sqrt(G_x**2 + G_y**2)
+<!-- -->    theta = np.arctan2(G_y, G_x) * (180 / math.pi)
+<!-- -->    return G, theta<!--
+     --></code></pre>
+        <p>
+          Once again, SciPy is used to perform kernel convolutions. Applying the
+          Sobel operator to our image and looking at its magnitude gives the
+          below result.
+        </p>
+        <figure>
+          <div style="width:40%" class="figure-wrapper">
+            <img src="assets/img/step2.png" alt="Sobel operator applied to original image">
+            <figcaption>The image's intensity gradient.</figcaption>
+          </div>
+        </figure>
+        <p>
+          The edges are now identified, but their thicknesses vary, as well as
+          their magnitudes (some lines are brighter than others). By definition,
+          edges should be a single pixel thin. Ideally, they should also be
+          deterministic – a point within the image is either an edge or it
+          isn't. These issues will be fixed in the remaining steps.
+        </p>
         <h3 id="subheading-3">Printing with braille</h3>
         <p>
         </p>
