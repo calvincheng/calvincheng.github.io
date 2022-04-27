@@ -1,48 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-
-const projects = [
-  {
-    name: "jigly",
-    link: "https://github.com/calvincheng/jigly",
-    active: true,
-  },
-  {
-    name: "qzlt",
-    link: "https://github.com/calvincheng/qzlt",
-    active: true,
-  },
-  {
-    name: "mimicry",
-    link: "https://github.com/calvincheng/mimicry",
-    active: true,
-  },
-  {
-    name: "pathfinding",
-    link: "https://github.com/calvincheng/pathfinding",
-    active: true,
-  },
-  {
-    name: "pointillism",
-    link: "https://github.com/calvincheng/pointillism",
-    active: true,
-  },
-  {
-    name: "boids",
-    link: "https://github.com/calvincheng/boids",
-    active: true,
-  },
-  {
-    name: "work in progress",
-    link: "#",
-    active: false,
-  },
-  {
-    name: "work in progress",
-    link: "#",
-    active: false,
-  },
-];
+import projects from "projects";
 
 const Project = ({ project }: any) => {
   return (
