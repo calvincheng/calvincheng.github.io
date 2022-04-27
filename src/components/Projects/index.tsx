@@ -7,6 +7,7 @@ const Project = ({ project }: any) => {
     <div
       css={css`
         flex-grow: 1;
+        min-height: 0;
         width: 100%;
         border-left: 1px solid black;
         border-bottom: 1px solid black;
@@ -16,7 +17,7 @@ const Project = ({ project }: any) => {
         <div
           css={css`
             position: relative;
-            padding: 32px;
+            padding: 0 32px;
             display: flex;
             width: 100%;
             height: 100%;
@@ -42,9 +43,9 @@ const Projects = () => {
     <div
       css={css`
         display: flex;
-        height: 100%;
         flex-direction: column;
         width: 240px;
+        font-size: 18px;
       `}
     >
       {projects.map((project) => (
