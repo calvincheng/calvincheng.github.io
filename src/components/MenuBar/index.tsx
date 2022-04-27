@@ -19,6 +19,7 @@ const MenuBar = () => {
         padding: 0px 32px;
 
         border-bottom: 1px solid black;
+        font-size: 18px;
       `}
     >
       <HomeLink />
