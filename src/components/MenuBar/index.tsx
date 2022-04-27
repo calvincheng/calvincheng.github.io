@@ -2,17 +2,7 @@
 import { css } from "@emotion/react";
 
 const HomeLink = () => {
-  return (
-    <a
-      css={css`
-        text-decoration: none;
-        color: black;
-      `}
-      href="#"
-    >
-      Calvin Cheng
-    </a>
-  );
+  return <a href="#">Calvin Cheng</a>;
 };
 
 const MenuBar = () => {
