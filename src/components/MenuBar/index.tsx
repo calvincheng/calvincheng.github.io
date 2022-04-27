@@ -1,0 +1,40 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+
+const HomeLink = () => {
+  return (
+    <a
+      css={css`
+        text-decoration: none;
+        color: black;
+      `}
+      href="#"
+    >
+      Calvin Cheng
+    </a>
+  );
+};
+
+const MenuBar = () => {
+  return (
+    <nav
+      css={css`
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 68px;
+
+        display: flex;
+        align-items: center;
+        padding: 0px 32px;
+
+        border-bottom: 1px solid black;
+      `}
+    >
+      <HomeLink />
+    </nav>
+  );
+};
+
+export default MenuBar;
