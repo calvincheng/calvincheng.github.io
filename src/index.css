@@ -6,7 +6,7 @@
 
 body {
   margin: 0;
-  font-family: "Inter";
+  font-family: "Inter", "Helvetica", sans-serif;
   font-size: 14px;
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
@@ -19,6 +19,10 @@ code {
 }
 
 a {
-  text-decoration: none;
+  text-underline-offset: 3px;
   color: black;
+}
+
+a:hover {
+  text-underline-offset: 6px;
 }

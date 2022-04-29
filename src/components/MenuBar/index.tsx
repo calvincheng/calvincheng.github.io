@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 
 const HomeLink = () => {
-  return <a href="#">Calvin Cheng</a>;
+  return <a href="">Calvin Cheng</a>;
 };
 
 const MenuBar = () => {
@@ -20,6 +20,10 @@ const MenuBar = () => {
 
         border-bottom: 1px solid black;
         font-size: 18px;
+
+        a {
+          text-decoration: none;
+        }
       `}
     >
       <HomeLink />
