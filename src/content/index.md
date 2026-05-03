@@ -1,5 +1,3 @@
-# calvin 鄭匯祺
-
 Hello! I'm a human who likes good software and design.
 
 I spend a lot of time writing code, most of which currently is for [Goodnotes],
