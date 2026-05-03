@@ -5,9 +5,11 @@
   --font-family-base: "JetBrains Mono", monospace;
   --font-family-code: "JetBrains Mono", monospace;
 
-  --font-size-s: 0.7rem;
-  --font-size-m: 0.9rem;
-  --font-size-l: 1.1rem;
+  --font-size-base: 0.925em;
+  --font-size-s: 0.825rem;
+  --font-size-m: 1.0rem;
+  --font-size-l: 1.125rem;
+
   --line-height-base: 1.5;
   --line-height-code: 1.35;
 
@@ -49,9 +51,7 @@
 /* Mobile devices */
 @media (max-width: 480px) {
   :root {
-    --font-size-s: 0.6rem;
-    --font-size-m: 0.8rem;
-    --font-size-l: 1.0rem;
+    --font-size-base: 0.825em;
   }
 }
 
@@ -62,7 +62,7 @@ html {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: var(--font-family-base);
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-base);
   line-height: var(--line-height-base);
 
   font-size-adjust: ex-height 0.53;
@@ -85,7 +85,7 @@ article > *:not(pre, table, header), section > *:not(pre, table, header) {
 }
 
 h1, h2, h3, h4 {
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-m);
   margin-block: 3rem 1.5rem;
 }
 
@@ -168,7 +168,7 @@ figure {
   margin-block-end: 1.5rem;
 
   & figcaption {
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-s);
   }
 }
 
@@ -178,10 +178,10 @@ h2#footnote-label {
 
 .footnotes {
   margin-block-start: 2rem;
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
 
   code {
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-s);
   }
 }
 
