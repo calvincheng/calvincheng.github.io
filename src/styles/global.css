@@ -65,6 +65,7 @@ html {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
 
+  letter-spacing: -0.01ch;
   font-size-adjust: ex-height 0.53;
   -webkit-text-size-adjust: none;
   -webkit-font-smoothing: antialiased;
@@ -92,7 +93,7 @@ h1, h2, h3, h4 {
 
 a {
   color: inherit;
-  text-underline-offset: 2px;
+  text-underline-offset: 0.125rem;
 
   @media (hover: hover) {
     &:hover {
@@ -129,8 +130,8 @@ blockquote {
 
 code {
   background: var(--code-bg);
-  padding: 2px 4px;
-  border-radius: 4px;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
   tab-size: 4;
   counter-reset: step;
   counter-increment: step 0;
