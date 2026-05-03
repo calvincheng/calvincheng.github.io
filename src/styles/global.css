@@ -152,6 +152,14 @@ blockquote {
   margin-inline-end: 0;
 }
 
+aside {
+  display: inline-block;
+  border: 1px solid var(--muted-text);
+  padding: 1rem;
+  font-size: var(--font-size-s);
+  margin-block-end: 1.5rem;
+}
+
 code {
   background: var(--code-bg);
   padding: 0.125rem 0.25rem;
@@ -257,12 +265,13 @@ hr {
 }
 
 kbd {
+  font-variant-caps: small-caps;
+  line-height: 1;
   font-family: var(--font-family-code);
-  padding: 2px 5px;
+  padding: 0px 6px;
   border: 0.5px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   border-radius: 4px;
-  margin: 0px 3px;
   color: var(--text-color);
   white-space: nowrap;
 }
