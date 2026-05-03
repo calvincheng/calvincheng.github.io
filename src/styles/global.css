@@ -191,6 +191,12 @@ pre, code {
   line-height: var(--line-height-code);
 }
 
+.astro-code, .astro-code span {
+  /* Handled by <pre> container */
+  background-color: transparent !important;
+  font-style: normal !important;
+}
+
 figure {
   margin: 0;
   margin-block-end: 1.5rem;
@@ -262,9 +268,4 @@ kbd {
   margin: 0px 3px;
   color: var(--text-color);
   white-space: nowrap;
-}
-
-.astro-code, .astro-code span {
-  /* Handled by <pre> container */
-  background-color: transparent !important;
 }
