@@ -66,6 +66,7 @@ html {
   line-height: var(--line-height-base);
 
   font-size-adjust: ex-height 0.53;
+  -webkit-text-size-adjust: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   text-wrap: pretty;
