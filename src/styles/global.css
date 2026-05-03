@@ -246,17 +246,14 @@ tr:last-child td {
 
 hr {
   border: none;
-  max-width: var(--min-width-normal);
-  line-height: var(--line-height-base);
   margin: 0;
   color: var(--text-color);
   margin-block-end: 1.5rem;
-  text-align: center;
-}
 
-hr::after {
-  content: "***";
-  font-variant-ligatures: none;
+  &::after {
+    content: "---";
+    font-variant-ligatures: none;
+  }
 }
 
 kbd {
