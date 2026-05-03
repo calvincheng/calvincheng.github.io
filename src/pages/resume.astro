@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+import { Content } from "../content/resume.md";
+---
+
+<Layout title="Resume">
+  <article class="resume">
+    <Content />
+  </article>
+</Layout>
+
+<style>
+  .resume {
+    h1 {
+      font-size: 1.25rem;
+    }
+    h2 {
+      margin-bottom: -1rem;
+    }
+    h3 + p {
+      margin-top: -1rem;
+      margin-bottom: 1rem;
+    }
+  }
+</style>
+
