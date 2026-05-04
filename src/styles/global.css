@@ -89,9 +89,20 @@ article, section, figure, header, footer {
   }
 }
 
+article, section {
+  * + h1, * + h2, * + h3, * + h4 {
+    margin-block-start: 3rem;
+  }
+  * + p, * + pre, * + ul, * + ol, * + hr, * + aside, * + figure, * + table {
+    margin-block-start: 1.5rem;
+  }
+  ul ol, ol ul, ul ul, ol ol {
+    margin-block-start: 0;
+  }
+}
+
 h1, h2, h3, h4 {
   font-size: var(--font-size-m);
-  margin-block: 3rem 1.5rem;
 }
 
 a {
@@ -109,14 +120,6 @@ a {
       }
     }
   }
-}
-
-p, pre, ul, ol {
-  margin-block-end: 1.5rem;
-}
-
-ul ol, ol ul, ul ul, ol ol {
-  margin-block-end: 0;
 }
 
 ul, ol {
@@ -157,7 +160,6 @@ aside {
   border: 1px solid var(--muted-text);
   padding: 1rem;
   font-size: var(--font-size-s);
-  margin-block-end: 1.5rem;
 }
 
 code {
@@ -206,9 +208,6 @@ pre, code {
 }
 
 figure {
-  margin: 0;
-  margin-block-end: 1.5rem;
-
   & figcaption {
     font-size: var(--font-size-s);
   }
@@ -230,7 +229,6 @@ h2#footnote-label {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-block-end: 2rem;
 }
 
 th {
@@ -254,9 +252,8 @@ tr:last-child td {
 
 hr {
   border: none;
-  margin: 0;
+  margin-inline: 0;
   color: var(--text-color);
-  margin-block-end: 1.5rem;
 
   &::after {
     content: "---";
