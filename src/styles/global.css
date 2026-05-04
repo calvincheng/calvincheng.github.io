@@ -169,6 +169,7 @@ code {
   tab-size: 4;
   counter-reset: step;
   counter-increment: step 0;
+  font-variant-ligatures: none;
 
   .line::before {
     content: counter(step);
