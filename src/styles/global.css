@@ -94,13 +94,15 @@ a {
   color: inherit;
   text-underline-offset: 2px;
 
-  &:hover {
-    background: var(--accent-color);
-    color: var(--accent-text);
-    text-decoration: none;
+  @media (hover: hover) {
+    &:hover {
+      background: var(--accent-color);
+      color: var(--accent-text);
+      text-decoration: none;
 
-    code {
-      background: transparent !important;
+      code {
+        background: transparent !important;
+      }
     }
   }
 }
