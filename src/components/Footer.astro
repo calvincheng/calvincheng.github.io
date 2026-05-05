@@ -1,0 +1,45 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+  <p>&copy; {currentYear} calvin 鄭匯祺</p>
+  <ul>
+    <li><a href="https://github.com/calvincheng">github</a></li>
+    <li><a href="https://linkedin.com/in/cheng-calvin">linkedin</a></li>
+    <li><a href="mailto:hello@madebycalvin.com">contact</a></li>
+  </ul>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    opacity: 0.6;
+    margin: 8rem auto 4rem auto;
+  }
+
+  ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  p, a {
+    font-size: var(--font-size-s);
+    text-decoration: none;
+  }
+
+  @media (max-width: 360px) {
+    footer, ul {
+      flex-direction: column;
+    }
+    ul {
+      gap: 0;
+    }
+  }
+}
+</style>
