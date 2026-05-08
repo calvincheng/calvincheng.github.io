@@ -20,7 +20,7 @@
   --accent-color: #000000;
   --accent-text: #ffffff;
   --border-color: #000000;
-  --muted-text: rgba(115, 115, 115, 0.65);
+  --muted-text: #878787;
 
   /* Layout */
   --max-width-normal: 42rem;
@@ -30,13 +30,14 @@
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-color: #000000;
+    --bg-color: #101010;
     --text-color: #ffffff;
     --code-color: var(--shiki-dark);
-    --code-bg: #1f1f1f;
+    --code-bg: #363636;
     --accent-color: #ffffff;
     --accent-text: #000000;
     --border-color: #ffffff;
+    --muted-text: #808080;
   }
 
   .astro-code,
