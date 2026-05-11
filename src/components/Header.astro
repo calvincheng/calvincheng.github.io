@@ -1,13 +1,17 @@
-<header>
+---
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/index.html";
+const [heading, className] = isHome ? ["calvin 鄭匯祺", ""] : ["⮐  back", "not-home"];
+---
+
+<header class={className}>
   <nav>
-    <h1><a href="/">calvin 鄭匯祺</a></h1>
+    <h1><a href="/">{heading}</a></h1>
   </nav>
 </header>
 
 <style>
   header {
-    max-width: var(--max-width-extended);
-    margin: 3rem auto 0 auto;
+    margin-block: 3rem 0;
 
     nav {
       display: flex;
@@ -18,6 +22,17 @@
 
     a {
       text-decoration: none;
+    }
+  }
+
+  header.not-home {
+    /* this helps separate the content from the 'back' link a bit more */
+    margin-block-end: 1.5rem;
+
+    a {
+      color: var(--muted-text);
+      font-size: var(--font-size-s);
+      font-weight: 300;
     }
   }
 </style>
