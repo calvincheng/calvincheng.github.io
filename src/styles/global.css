@@ -256,10 +256,10 @@ tr:last-child td {
 hr {
   border: none;
   margin-inline: 0;
-  color: var(--text-color);
+  color: inherit;
 
   &::after {
-    content: "---";
+    content: "—————";
     font-variant-ligatures: none;
   }
 }
