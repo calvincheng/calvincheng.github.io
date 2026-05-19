@@ -221,27 +221,36 @@ h2#footnote-label {
 }
 
 table {
-  width: 100%;
   border-collapse: collapse;
 }
 
 th {
-  padding: 12px;
+  padding-block: 8px;
   text-align: left;
-  font-weight: 600;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1.5px solid var(--fg-color);
 }
 
 td {
-  padding: 12px;
-  border-bottom: 0.5px solid var(--border-color);
+  padding-block: 8px;
+  border-bottom: 1px solid var(--muted-text);
   vertical-align: top;
   line-height: var(--line-height-base);
 }
 
 tr:last-child td {
   border-bottom: none;
+}
+
+th, td {
+  padding-inline: 1rem;
+
+  &:first-child {
+    padding-inline-start: 0;
+  }
+
+  &:last-child {
+    padding-inline-end: 0;
+  }
 }
 
 hr {
