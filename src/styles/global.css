@@ -13,11 +13,8 @@
 
   /* Colors - Light Mode */
   --bg-color: #ffffff;
-  --text-color: #000000;
+  --fg-color: #000000;
   --code-bg: #eeeeee;
-  --accent-color: #000000;
-  --accent-text: #ffffff;
-  --border-color: #000000;
   --muted-text: #878787;
 
   /* Layout */
@@ -29,13 +26,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #101010;
-    --text-color: #ffffff;
+    --fg-color: #ffffff;
     --code-color: var(--shiki-dark);
     --code-bg: #363636;
-    --accent-color: #ffffff;
-    --accent-text: #000000;
-    --border-color: #ffffff;
-    --muted-text: #808080;
   }
 
   .astro-code,
@@ -59,7 +52,7 @@ html {
   padding: 2rem 1rem 6rem 1rem;
 
   background-color: var(--bg-color);
-  color: var(--text-color);
+  color: var(--fg-color);
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
@@ -110,8 +103,8 @@ a {
 
   @media (hover: hover) {
     &:hover {
-      background: var(--accent-color);
-      color: var(--accent-text);
+      background: var(--fg-color);
+      color: var(--bg-color);
       text-decoration: none;
 
       code {
@@ -148,7 +141,7 @@ sup {
 
 blockquote {
   font-style: italic;
-  border-inline-start: 1px solid var(--border-color);
+  border-inline-start: 1px solid var(--fg-color);
   padding-inline-start: 2ch;
   margin-inline-start: 2ch;
   margin-inline-end: 0;
@@ -267,9 +260,9 @@ kbd {
   line-height: 1;
   font-family: var(--font-family-code);
   padding: 0px 6px;
-  border: 0.5px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  border: 0.5px solid var(--fg-color);
+  border-bottom: 1px solid var(--fg-color);
   border-radius: 4px;
-  color: var(--text-color);
+  color: var(--fg-color);
   white-space: nowrap;
 }
