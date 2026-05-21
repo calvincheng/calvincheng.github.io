@@ -85,7 +85,8 @@ article, section {
   * + h1, * + h2, * + h3, * + h4 {
     margin-block-start: 3rem;
   }
-  * + p, * + pre, * + ul, * + ol, * + hr, * + aside, * + figure, * + table {
+  * + p, * + pre, * + ul, * + ol, * + hr, * + aside, * + figure, * + table, * +
+    * + blockquote {
     margin-block-start: 1.5rem;
   }
   ul ol, ol ul, ul ul, ol ol {
