@@ -16,9 +16,14 @@ export default defineConfig({
     {
       name: "JetBrains Mono",
       cssVariable: "--font-jetbrains-mono",
-      provider: fontProviders.fontsource(),
+      provider: fontProviders.local(),
+      options: {
+        variants: [
+          { src: ["./src/assets/fonts/JetbrainsMono.woff2"] },
+          { src: ["./src/assets/fonts/JetbrainsMono-italic.woff2"] },
+        ]
+      },
       subsets: ["latin", "latin-ext"],
-      unicodeRange: ["U+2500-257F"],  // box-drawing characters
       fallbacks: [],
       display: "block",
     },
