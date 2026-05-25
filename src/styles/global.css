@@ -15,7 +15,7 @@
   --bg-color: #ffffff;
   --fg-color: #000000;
   --code-bg: #eeeeee;
-  --muted-text: #878787;
+  --muted-color: #878787;
 
   /* Layout */
   --max-width-normal: 42rem;
@@ -146,11 +146,12 @@ blockquote {
   padding-inline-start: 2ch;
   margin-inline-start: 2ch;
   margin-inline-end: 0;
+  max-width: calc(var(--max-width-normal) - 2ch);
 }
 
 aside {
   display: inline-block;
-  border: 1px solid var(--muted-text);
+  border: 1px solid var(--muted-color);
   padding: 1rem;
   font-size: var(--font-size-s);
 }
@@ -182,11 +183,11 @@ pre {
       counter-increment: step;
       width: 1.5rem;
       padding-right: 0.5rem;
-      border-right: 1px solid var(--muted-text);
+      border-right: 1px solid var(--muted-color);
       margin-inline: -1rem 1rem;
       display: inline-block;
       text-align: right;
-      color: var(--muted-text);
+      color: var(--muted-color);
     }
   }
 }
@@ -233,7 +234,7 @@ th {
 
 td {
   padding-block: 8px;
-  border-bottom: 1px solid var(--muted-text);
+  border-bottom: 1px solid var(--muted-color);
   vertical-align: top;
   line-height: var(--line-height-base);
 }
