@@ -3,7 +3,7 @@
   --font-family-base: var(--font-jetbrains-mono), monospace;
   --font-family-code: var(--font-jetbrains-mono), monospace;
 
-  --font-size-base: 0.925em;
+  --font-size-base: 0.9em;
   --font-size-s: 0.825rem;
   --font-size-m: 1.0rem;
   --font-size-l: 1.125rem;
@@ -18,8 +18,8 @@
   --muted-color: #878787;
 
   /* Layout */
-  --max-width-normal: 42rem;
-  --max-width-extended: 54rem;
+  --max-width-normal: 38rem;
+  --max-width-extended: 50rem;
 }
 
 /* Dark mode */
