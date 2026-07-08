@@ -1,6 +1,6 @@
 ---
 const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/index.html";
-const [heading, className] = isHome ? ["calvin 鄭匯祺", ""] : ["⮐  back", "not-home"];
+const [heading, className] = isHome ? ["calvin 鄭匯祺", ""] : ["← back to home", "not-home"];
 ---
 
 <header class={className}>
@@ -26,13 +26,12 @@ const [heading, className] = isHome ? ["calvin 鄭匯祺", ""] : ["⮐  back", "
   }
 
   header.not-home {
-    /* this helps separate the content from the 'back' link a bit more */
-    margin-block-end: 1.5rem;
     color: var(--muted-color);
 
     a {
       font-size: var(--font-size-s);
       font-weight: 300;
+      text-decoration: underline;
     }
   }
 </style>
