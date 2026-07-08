@@ -1,10 +1,14 @@
 ---
 const currentYear = new Date().getFullYear();
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "/index.html";
 ---
 
 <footer>
   <p>
     ---
+  </p>
+  <p style={`display: ${isHome ? "none" : "block"}`}>
+    <a href="/">← back to home</a>
   </p>
   <p>
     find me via <a href="https://www.github.com/calvincheng">github</a>, <a href="https://www.linkedincom/in/cheng-calvin">linkedin</a>, or <a href="mailto:hello@madebycalvin.com">email</a>
