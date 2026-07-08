@@ -1,6 +1,6 @@
-# Calvin Cheng 鄭匯祺
+# CALVIN CHENG 鄭匯祺
 
-hello@madebycalvin.com  
+[hello@madebycalvin.com](mailto:hello@madebycalvin.com)  
 [madebycalvin.com](https://www.madebycalvin.com)  
 [github.com/calvincheng](https://www.github.com/calvincheng)  
 [linkedin.com/in/cheng-calvin](https://www.linkedin.com/in/cheng-calvin)  
